@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: vpromq01
+spec:
+  ports:
+  - port: 15672
+    targetPort: 15672 # Changed to the actual container port number
+    protocol: TCP
+  selector:
+    app: vpromq01
+  type: ClusterIP # Change to NodePort or LoadBalancer if needed for external access
+

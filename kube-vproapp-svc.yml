@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: dev
+  name: vproapp-service
+spec:
+  ports:
+  - port: 80 # Port that the service will expose
+    targetPort: 8080 # Changed to the actual container port number
+    protocol: TCP
+  selector:
+    app: vproapp
+  type: NodePort # Use NodePort to expose the service on each node's IP at a static port
+

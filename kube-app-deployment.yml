@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev
+  name: vproapp
+  labels:
+    app: vproapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vproapp
+  template:
+    metadata:
+      labels:
+        app: vproapp
+    spec:
+      containers:
+      - name: vproapp
+        image: vprofile/vprofileapp:V1
+        ports:
+        - name: vproapp-port
+          containerPort: 8080
+        resources:
+          requests:
+            memory: "128Mi"  # Minimum memory request
+            cpu: "500m"      # Minimum CPU request
+          limits:
+            memory: "256Mi"  # Maximum memory limit
+            cpu: "1"         # Maximum CPU limit
